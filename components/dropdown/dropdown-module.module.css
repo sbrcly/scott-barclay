@@ -5,7 +5,7 @@
     background-color: transparent;
     border: none;
     padding: 10px;
-    width: 200px;
+    width: max-content;
     z-index: 10;
     opacity: 0;
     pointer-events: none;
@@ -14,7 +14,7 @@
 }
 
 .dropdown-module-content {
-    padding: 10px;
+    /* padding: 15px 20px; */
     background-color: #111;
     border: 1px solid #333;
     border-radius: 10px;

@@ -5,7 +5,9 @@ import Link from "next/link"
 import { IoChevronDownOutline } from "react-icons/io5"
 
 import classes from "./main-header.module.css"
-import DropdownModule from "../DropdownModule"
+import DropdownModule from "../dropdown/DropdownModule.jsx"
+import { CATEGORIES } from "@/dummy-data"
+import Category from "../dropdown/Category"
 
 export default function ExpandableLink() {
     const [isHovered, setIsHovered] = useState(false)
@@ -25,8 +27,13 @@ export default function ExpandableLink() {
             <DropdownModule
                 isHovered={isHovered}
             >
-                {/* Content for the module goes here */}
-                <p>This is the dropdown module content.</p>
+                <ul className={classes["module-content"]}>
+                    {CATEGORIES.map(category => {
+                        return (
+                            <Category key={category.title} category={category} />
+                        )
+                    })}
+                </ul>
             </DropdownModule>
         </li>
     )

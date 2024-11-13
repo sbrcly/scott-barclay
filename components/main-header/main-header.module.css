@@ -63,3 +63,7 @@ a.nav-link.show .link-span {
     align-items: center;
 }
 
+.module-content {
+    display: flex;
+}
+
