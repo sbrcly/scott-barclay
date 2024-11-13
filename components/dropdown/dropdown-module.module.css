@@ -10,11 +10,10 @@
     opacity: 0;
     pointer-events: none;
     transform: translateX(-50%);
-    transition: opacity 0.3s;
+    transition: opacity .3s ease-in;
 }
 
 .dropdown-module-content {
-    /* padding: 15px 20px; */
     background-color: #111;
     border: 1px solid #333;
     border-radius: 10px;
