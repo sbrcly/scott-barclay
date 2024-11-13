@@ -5,6 +5,7 @@ import Link from "next/link"
 import { IoChevronDownOutline } from "react-icons/io5"
 
 import classes from "./main-header.module.css"
+import DropdownModule from "../DropdownModule"
 
 export default function ExpandableLink() {
     const [isHovered, setIsHovered] = useState(false)
@@ -21,12 +22,12 @@ export default function ExpandableLink() {
                     Work <span className={classes["link-span"]}><IoChevronDownOutline /></span>
                 </div>
             </Link>
-            <div className={`${classes["dropdown-module"]} ${isHovered ? classes.show : ""}`}>
-                <div className={classes["dropdown-module-content"]}>
-                    {/* Content for the module goes here */}
-                    <p>This is the dropdown module content.</p>
-                </div>
-            </div>
+            <DropdownModule
+                isHovered={isHovered}
+            >
+                {/* Content for the module goes here */}
+                <p>This is the dropdown module content.</p>
+            </DropdownModule>
         </li>
     )
 };
