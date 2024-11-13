@@ -13,9 +13,10 @@ export default function ExpandableLink() {
         <li
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={isHovered ? classes.show : ""}
         >
-            <Link className={`${classes['nav-link']} ${isHovered ? classes.show : ""}`} href="/work">
+            <Link
+                className={`${classes['nav-link']} ${isHovered ? classes.show : ""}`} href="/work"
+            >
                 <div className={classes["link-content"]}>
                     Work <span className={classes["link-span"]}><IoChevronDownOutline /></span>
                 </div>

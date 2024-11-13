@@ -3,11 +3,12 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 2rem 3rem;
+    padding: 1rem 3rem;
 }
 
-.logo {
-    font-size: 32px;
+.logo,
+.books-link {
+    font-size: 24px;
 }
 
 .nav {
@@ -18,39 +19,27 @@
 
 .nav ul {
     display: flex;
+    align-items: center;
 }
 
 .nav li {
     margin: 0 8px;
-    padding: 3px 10px;
-    border-radius: 7px;
 }
 
-.nav li.basic:hover {
+.nav li .nav-link:hover {
     background-color: #33333355;
     box-shadow: 0 0 10px #151619;
-    transition: all .3s;
-}
-
-.nav li.show {
-    background-color: #33333355;
-    box-shadow: 0 0 10px #151619;
+    opacity: 1;
     transition: all .3s;
 }
 
 a.nav-link {
+    display: flex;
+    padding: 5px 10px;
+    border-radius: 7px;
     opacity: .5;
     font-weight: 400;
     font-size: 16px;
-}
-
-a.nav-link.basic:hover {
-    opacity: 1;
-    transition: all .3s;
-}
-
-a.nav-link.show {
-    opacity: 1;
 }
 
 a.nav-link .link-span {
@@ -62,10 +51,6 @@ a.nav-link .link-span {
 
 a.nav-link.show .link-span {
     transform: rotateX(180deg);
-}
-
-.books-link {
-    font-size: 32px;
 }
 
 .link-content {
