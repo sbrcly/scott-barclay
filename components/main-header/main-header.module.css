@@ -49,6 +49,10 @@ a.nav-link .link-span {
     transform-origin: center;
 }
 
+a.nav-link.show {
+    opacity: 1;
+}
+
 a.nav-link.show .link-span {
     transform: rotateX(180deg);
 }
