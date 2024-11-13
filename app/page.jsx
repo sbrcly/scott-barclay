@@ -1,11 +1,10 @@
-import MainHeader from "@/components/MainHeader";
 import "./page.module.css"
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <main>
-        <h1>Page</h1>
+        {/* <h1>Page</h1> */}
       </main>
     </>
   );

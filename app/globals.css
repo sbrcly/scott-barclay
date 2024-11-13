@@ -1,4 +1,6 @@
 /* CSS Reset */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 *,
 *::before,
 *::after {
@@ -14,8 +16,8 @@
   --color-accent: #e74c3c;
 
   /* Neutral Colors */
-  --color-text: #f7efd2;
-  --color-background: #1e252b;
+  --color-text: #ffffff;
+  --color-background: #050506;
   --color-border: #ddd;
 
   /* Additional Variables */
@@ -26,15 +28,15 @@
 html, body {
   height: 100%;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
-  color: #333;
-  background-color: #fff;
+  color: var(--color-text);
+  background-color: var(--color-background);
   overflow-x: hidden;
 }
 
@@ -55,7 +57,7 @@ button {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-text);
 }
 
 table {
@@ -70,9 +72,4 @@ ul, ol {
 :focus-visible {
   outline: 2px solid #0070f3; /* Customize focus ring color */
   outline-offset: 2px;
-}
-
-body {
-  background-color: var(--color-background);
-  color: var(--color-text);
 }
