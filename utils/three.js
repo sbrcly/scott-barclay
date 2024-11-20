@@ -29,8 +29,8 @@ export const renderThreeContent = () => {
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshStandardMaterial({
             color: '#ffffff',
-            roughness: .4,
-            metalness: .75
+            roughness: .5,
+            metalness: .5
         })
     )
     cube.rotation.y = Math.PI * .25
@@ -41,12 +41,12 @@ export const renderThreeContent = () => {
     scene.add(cube)
 
     // Light
-    const ambientLight = new THREE.AmbientLight('#ffffff', .5)
-    const directionalLight = new THREE.DirectionalLight('#ffffff', 3)
+    const ambientLight = new THREE.AmbientLight('#ffffff', .25)
+    const directionalLight = new THREE.DirectionalLight('#afcf9f', 3)
     directionalLight.position.set(1,1,.5)
 
-    const pointLight = new THREE.PointLight('#248573', 20)
-    pointLight.position.set(-.9, .6, .9)
+    const pointLight = new THREE.PointLight('#c48573', 10)
+    pointLight.position.set(-1, .8, 1)
     scene.add(pointLight)
 
     guiLights.add(ambientLight, 'intensity').min(.01).max(3).step(.01).name('Ambient Intensity')
@@ -84,13 +84,21 @@ export const renderThreeContent = () => {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
 
-    // const tick = () => {
-    //     controls.update()
+    const clock = new THREE.Clock()
 
-    //     renderer.render(scene, camera)
+    const tick = () => {
+        // controls.update()
+        const elapsedTime = clock.getElapsedTime()
 
-    //     window.requestAnimationFrame(tick)
-    // }
+        // Update Cube
+        cube.rotation.y = elapsedTime * .03
+        cube.rotation.x = elapsedTime * .05
+        cube.rotation.z = elapsedTime * .01
 
-    // tick()
+        renderer.render(scene, camera)
+
+        window.requestAnimationFrame(tick)
+    }
+
+    tick()
 }
