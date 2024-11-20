@@ -2,7 +2,6 @@
 
 import * as THREE from "three"
 import GUI from "lil-gui"
-// import { OrbitControls } from "three/addons/controls/OrbitControls.js"
 
 export const renderThreeContent = () => {
     const gui = new GUI()
@@ -21,16 +20,13 @@ export const renderThreeContent = () => {
         height: window.innerHeight
     }
 
-    // const controls = new OrbitControls(camera, canvas)
-    // controls.enableDamping = true
-
     // Test Object
     const cube = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshStandardMaterial({
-            color: '#ffffff',
+            color: '#111',
             roughness: .5,
-            metalness: .5
+            metalness: .99
         })
     )
     cube.rotation.y = Math.PI * .25
@@ -41,29 +37,25 @@ export const renderThreeContent = () => {
     scene.add(cube)
 
     // Light
-    const ambientLight = new THREE.AmbientLight('#ffffff', .25)
-    const directionalLight = new THREE.DirectionalLight('#afcf9f', 3)
-    directionalLight.position.set(1,1,.5)
+    const directionalLightRight = new THREE.DirectionalLight('#afcf9f', 7)
+    directionalLightRight.position.set(1, .5, .5)
 
-    const pointLight = new THREE.PointLight('#c48573', 10)
-    pointLight.position.set(-1, .8, 1)
-    scene.add(pointLight)
+    const directionalLightLeft = new THREE.DirectionalLight('#c48573', 7)
+    directionalLightLeft.position.set(-1, -.5, .5)
 
-    guiLights.add(ambientLight, 'intensity').min(.01).max(3).step(.01).name('Ambient Intensity')
-    guiLights.add(directionalLight, 'intensity').min(.01).max(10).step(.01).name('Directional Intensity')
-    guiLights.add(pointLight, 'intensity').min(.1).max(20).step(.1).name('Point Intensity')
+    guiLights.add(directionalLightRight, 'intensity').min(0).max(10).step(.01).name('Directional R Intensity')
+    guiLights.add(directionalLightLeft, 'intensity').min(0).max(20).step(.1).name('Directional L Intensity')
 
-    scene.add(ambientLight, directionalLight)
+    scene.add(directionalLightRight, directionalLightLeft)
 
     // Camera
     const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, .1, 100)
-    camera.position.set(0, 1, 3)
+    camera.position.set(0, 1, 4)
     camera.lookAt(cube.position)
     scene.add(camera)
 
     const renderer = new THREE.WebGLRenderer({
-        canvas: canvas,
-        alpha: true
+        canvas: canvas
     })
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -71,15 +63,12 @@ export const renderThreeContent = () => {
     renderer.render(scene, camera)
 
     window.addEventListener('resize', () => {
-        // Update sizes
         sizes.width = window.innerWidth
         sizes.height = window.innerHeight
     
-        // Update camera
         camera.aspect = sizes.width / sizes.height
         camera.updateProjectionMatrix()
     
-        // Update renderer
         renderer.setSize(sizes.width, sizes.height)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
@@ -87,13 +76,12 @@ export const renderThreeContent = () => {
     const clock = new THREE.Clock()
 
     const tick = () => {
-        // controls.update()
         const elapsedTime = clock.getElapsedTime()
 
         // Update Cube
-        cube.rotation.y = elapsedTime * .03
-        cube.rotation.x = elapsedTime * .05
-        cube.rotation.z = elapsedTime * .01
+        cube.rotation.y = elapsedTime * .1
+        cube.rotation.x = elapsedTime * .2
+        cube.rotation.z = elapsedTime * .3
 
         renderer.render(scene, camera)
 
