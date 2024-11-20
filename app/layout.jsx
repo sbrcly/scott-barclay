@@ -1,4 +1,6 @@
 import MainHeader from "@/components/main-header/MainHeader.jsx"
+import Canvas from "@/components/Canvas"
+
 import "./globals.css"
 
 export const metadata = {
@@ -12,6 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="body">
         <MainHeader />
+        <Canvas />
         {children}
       </body>
     </html>
