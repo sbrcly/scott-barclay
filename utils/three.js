@@ -18,14 +18,24 @@ for (let i = 0; i < count * 3; i++) {
 
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlesArray, 3))
 
+let showGui = false
 
 export const renderThreeContent = () => {
     const gui = new GUI()
     gui.close()
+    gui.show(showGui)
 
     // GUI Folders
     const guiCube = gui.addFolder('Cube')
     const guiLights = gui.addFolder('Lights')
+
+    window.addEventListener('keypress', (e) => {
+        console.log(e.key);
+        if (e.key === 'g') {
+            showGui = !showGui
+            gui.show(showGui)
+        }
+    })
 
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.x / window.innerWidth - .5

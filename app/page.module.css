@@ -1,7 +1,7 @@
 main.main {
     position: fixed;
     top: 50%;
-    left: 25%;
+    left: 20%;
     transform: translate(-25%, -50%);
     max-width: 780px;
 }
