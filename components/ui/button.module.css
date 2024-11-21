@@ -1,0 +1,15 @@
+button.prominent {
+    background-color: #506886;
+    padding: 10px 0;
+    border-radius: 7px;
+    border: none;
+    color: var(--color-text);
+    font-weight: 500;
+    width: 125px;
+    letter-spacing: 1px;
+}
+
+button.prominent:hover {
+    opacity: .8;
+    transition: all .3s ease-out;
+}

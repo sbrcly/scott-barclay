@@ -1,0 +1,19 @@
+main.main {
+    position: fixed;
+    top: 50%;
+    left: 25%;
+    transform: translate(-25%, -50%);
+    max-width: 780px;
+}
+
+h1.title {
+    font-size: 72px;
+    line-height: 1.1;
+}
+
+h2.description {
+    opacity: .5;
+    font-weight: 500;
+    padding: 16px 0;
+    max-width: 550px;
+}
