@@ -2,6 +2,8 @@ import { IoCalculatorOutline } from "react-icons/io5"
 import { AiOutlineSchedule } from "react-icons/ai"
 import { TbShirtSport } from "react-icons/tb"
 import { IoCarSportOutline } from "react-icons/io5"
+import { AiOutlineHtml5 } from "react-icons/ai"
+import { TbBrandJavascript } from "react-icons/tb"
 
 export const CATEGORIES = [
     {
@@ -36,6 +38,23 @@ export const CATEGORIES = [
                 href: "/work/incognito-wraps",
                 icon: <IoCarSportOutline />
             }
+        ]
+    },
+    {
+        title: "Portfolios",
+        projects: [
+            {
+                title: "Portfolio V2",
+                description: "Built in 2021",
+                href: "/work/portfolio-v2",
+                icon: <TbBrandJavascript />
+            },
+            {
+                title: "Portfolio V1",
+                description: "Built in 2020",
+                href: "/work/portfolio-v1",
+                icon: <AiOutlineHtml5 />
+            },
         ]
     }
 ]
