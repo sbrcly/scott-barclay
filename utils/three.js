@@ -3,7 +3,7 @@
 import * as THREE from "three"
 import GUI from "lil-gui"
 
-const count = 250
+const count = 500
 const mouse = {
     x: 0,
     y: 0
@@ -26,10 +26,8 @@ export const renderThreeContent = () => {
     gui.close()
     gui.show(showGui)
 
-    // Textures
     const star1 = textureLoader.load("/static/textures/particles/circle_05.png")
 
-    // GUI Folders
     const guiCube = gui.addFolder('Cube')
     const guiLights = gui.addFolder('Lights')
 
@@ -78,7 +76,7 @@ export const renderThreeContent = () => {
     const particles = new THREE.Points(
         particlesGeometry,
         new THREE.PointsMaterial({
-            size: .03,
+            size: .05,
             depthWrite: false,
             sizeAttenuation: true,
             blending: THREE.AdditiveBlending,
@@ -89,11 +87,11 @@ export const renderThreeContent = () => {
     scene.add(particles)
 
     // Light
-    const ambientLight = new THREE.AmbientLight(params.directionalColor, 6)
-    scene.add(ambientLight)
+    // const ambientLight = new THREE.AmbientLight(params.directionalColor, 30)
+    // scene.add(ambientLight)
 
-    const directionalLight1 = new THREE.DirectionalLight(params.directionalColor, 10)
-    directionalLight1.position.set(1, 1, -.5)
+    const directionalLight1 = new THREE.DirectionalLight(params.directionalColor, 20)
+    directionalLight1.position.set(1, 0, -.5)
     scene.add(directionalLight1)
 
     const directionalLight2 = new THREE.DirectionalLight(params.directionalColor, 10)
@@ -108,15 +106,18 @@ export const renderThreeContent = () => {
 
     guiLights.add(directionalLight1, 'intensity').min(0).max(20).step(.01).name('Directional 1 Intensity')
     guiLights.add(directionalLight2, 'intensity').min(0).max(20).step(.01).name('Directional 2 Intensity')
-    guiLights.add(ambientLight, 'intensity').min(0).max(20).step(.01).name('Ambient Intensity')
+    // guiLights.add(ambientLight, 'intensity').min(0).max(20).step(.01).name('Ambient Intensity')
 
 
 
     // Camera
+    const cameraGroup = new THREE.Group()
+    scene.add(cameraGroup)
+
     const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, .1, 100)
-    camera.position.set(0, 0, 4)
+    camera.position.set(.5, 0, 4)
     camera.lookAt(cube.position)
-    scene.add(camera)
+    cameraGroup.add(camera)
 
     const renderer = new THREE.WebGLRenderer({
         canvas: canvas
@@ -138,27 +139,28 @@ export const renderThreeContent = () => {
     })
 
     const clock = new THREE.Clock()
+    let previousTime = 0
 
     const tick = () => {
         const elapsedTime = clock.getElapsedTime()
+        const deltaTime = elapsedTime - previousTime
+        previousTime = elapsedTime
 
-        // // Update Cube
-        cube.rotation.y = elapsedTime * .14
-        cube.rotation.x = elapsedTime * .15
-        cube.rotation.z = - elapsedTime * .16
+        cube.rotation.y += deltaTime * .14
+        cube.rotation.x += deltaTime * .15
+        cube.rotation.z += - deltaTime * .16
 
-        // Camera
-        camera.position.x = Math.cos(elapsedTime * .005) * 4
-        camera.position.z = Math.sin(elapsedTime * .005) * 4 - (mouse.x * .05)
-        camera.position.y = mouse.y * .05
+        const parallaxX = - mouse.x * 0.25
+        const parallaxY = mouse.y * 0.25
+
+        const damping = 2
+
+        cameraGroup.position.z += (parallaxX - cameraGroup.position.z) * damping * deltaTime
+        cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * damping * deltaTime
+
+        camera.position.x = Math.cos(elapsedTime * 0.005) * 4
+        camera.position.z = Math.sin(elapsedTime * 0.005) * 4
         camera.lookAt(cube.position)
-
-        // directionalLight1.position.x = Math.cos(elapsedTime * .005)
-        // directionalLight1.position.z = Math.sin(elapsedTime * .005)
-        // // directionalLight1.position.y = - mouse.y * .5
-
-        // directionalLight2.position.x = Math.cos(elapsedTime * .005)
-        // directionalLight2.position.z = Math.sin(elapsedTime * .005)
 
         renderer.render(scene, camera)
 
