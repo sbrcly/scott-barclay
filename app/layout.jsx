@@ -14,7 +14,9 @@ export default function RootLayout({ children }) {
       <body className="body">
         <MainHeader />
         <Canvas />
-        {children}
+        <div className="children-content">
+          {children}
+        </div>
       </body>
     </html>
   )

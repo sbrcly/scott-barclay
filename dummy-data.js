@@ -4,6 +4,7 @@ import { TbShirtSport } from "react-icons/tb"
 import { IoCarSportOutline } from "react-icons/io5"
 import { AiOutlineHtml5 } from "react-icons/ai"
 import { TbBrandJavascript } from "react-icons/tb"
+import { GrTicket } from "react-icons/gr"
 
 export const CATEGORIES = [
     {
@@ -26,6 +27,12 @@ export const CATEGORIES = [
                 description: "Odds Table",
                 href: "/work/betting-odds",
                 icon: <TbShirtSport />
+            },
+            {
+                title: "Pricing Portal",
+                description: "Price & Monitor",
+                href: "/work/pricing-portal",
+                icon: <GrTicket />
             },
         ]
     },
