@@ -21,9 +21,13 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlesAr
 let showGui = false
 
 export const renderThreeContent = () => {
+    const textureLoader = new THREE.TextureLoader()
     const gui = new GUI()
     gui.close()
     gui.show(showGui)
+
+    // Textures
+    const star1 = textureLoader.load("/static/textures/particles/circle_05.png")
 
     // GUI Folders
     const guiCube = gui.addFolder('Cube')
@@ -64,7 +68,6 @@ export const renderThreeContent = () => {
             metalness: .85
         })
     )
-    // cube.rotation.y = Math.PI * .25
 
     guiCube.add(cube.material, 'roughness').min(0).max(1).step(.01).name('Roughness')
     guiCube.add(cube.material, 'metalness').min(0).max(1).step(.01).name('Metalness')
@@ -75,10 +78,11 @@ export const renderThreeContent = () => {
     const particles = new THREE.Points(
         particlesGeometry,
         new THREE.PointsMaterial({
-            size: .01,
+            size: .03,
             depthWrite: false,
             sizeAttenuation: true,
             blending: THREE.AdditiveBlending,
+            alphaMap: star1
         })
     )
 
