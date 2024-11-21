@@ -31,19 +31,6 @@ export const renderThreeContent = () => {
     const guiCube = gui.addFolder('Cube')
     const guiLights = gui.addFolder('Lights')
 
-    window.addEventListener('keypress', (e) => {
-        console.log(e.key);
-        if (e.key === 'g') {
-            showGui = !showGui
-            gui.show(showGui)
-        }
-    })
-
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.x / window.innerWidth - .5
-        mouse.y = - e.y / window.innerHeight + .5
-    })
-
     const canvas = document.querySelector('#webgl')
 
     const scene = new THREE.Scene()
@@ -87,8 +74,8 @@ export const renderThreeContent = () => {
     scene.add(particles)
 
     // Light
-    // const ambientLight = new THREE.AmbientLight(params.directionalColor, 30)
-    // scene.add(ambientLight)
+    const ambientLight = new THREE.AmbientLight(params.directionalColor, 30)
+    scene.add(ambientLight)
 
     const directionalLight1 = new THREE.DirectionalLight(params.directionalColor, 20)
     directionalLight1.position.set(1, 0, -.5)
@@ -127,6 +114,7 @@ export const renderThreeContent = () => {
 
     renderer.render(scene, camera)
 
+    // Window Listeners
     window.addEventListener('resize', () => {
         sizes.width = window.innerWidth
         sizes.height = window.innerHeight
@@ -136,6 +124,18 @@ export const renderThreeContent = () => {
     
         renderer.setSize(sizes.width, sizes.height)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    })
+
+    window.addEventListener('keypress', (e) => {
+        if (e.key === 'g') {
+            showGui = !showGui
+            gui.show(showGui)
+        }
+    })
+
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.x / window.innerWidth - .5
+        mouse.y = - e.y / window.innerHeight + .5
     })
 
     const clock = new THREE.Clock()
@@ -150,16 +150,16 @@ export const renderThreeContent = () => {
         cube.rotation.x += deltaTime * .15
         cube.rotation.z += - deltaTime * .16
 
-        const parallaxX = - mouse.x * 0.25
+        const parallaxX = mouse.x * 0.25
         const parallaxY = mouse.y * 0.25
 
-        const damping = 1
+        const damping = 0.75
 
-        cameraGroup.position.z += (parallaxX - cameraGroup.position.z) * damping * deltaTime
+        cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * damping * deltaTime
         cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * damping * deltaTime
 
-        camera.position.x = Math.cos(elapsedTime * 0.005) * 4
-        camera.position.z = Math.sin(elapsedTime * 0.005) * 4
+        camera.position.x = Math.sin(elapsedTime * 0.0025) * 4
+        camera.position.z = Math.cos(elapsedTime * 0.0025) * 4
         camera.lookAt(cube.position)
 
         renderer.render(scene, camera)

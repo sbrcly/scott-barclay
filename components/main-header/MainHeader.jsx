@@ -3,6 +3,7 @@ import { IoLibrary } from "react-icons/io5"
 
 import classes from "./main-header.module.css"
 import ExpandableLink from "./ExpandableLink"
+import StandardNavLink from "./StandardNavLink"
 
 export default function MainHeader() {
     return (
@@ -15,13 +16,18 @@ export default function MainHeader() {
 
             <nav className={classes.nav}>
                 <ul>
-                    <li className={classes.basic}>
-                        <Link className={`${classes['nav-link']} ${classes.basic}`} href="/about">About</Link>
-                    </li>
-                    <ExpandableLink />
-                    <li className={classes.basic}>
-                        <Link className={`${classes['nav-link']} ${classes.basic}`} href="/connect">Connect</Link>
-                    </li>
+                    <StandardNavLink
+                        href="/about"
+                        title="About"
+                    />
+                    <ExpandableLink
+                        href="/work"
+                        title="Work"
+                    />
+                    <StandardNavLink
+                        href="/connect"
+                        title="Connect"
+                    />
                 </ul>
             </nav>
 

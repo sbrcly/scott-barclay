@@ -5,12 +5,12 @@ import { renderThreeContent } from "@/utils/three"
 
 import classes from "./canvas.module.css"
 
-export default function Canvas(params) {
+export default function Canvas() {
     useEffect(() => {
-        const three = renderThreeContent()
+        renderThreeContent()
     }, [])
 
     return (
         <canvas className={classes.webgl} id="webgl"></canvas>
     )
-};
+}
