@@ -1,6 +1,6 @@
 button.prominent {
+    position: relative;
     background-color: #506886;
-    padding: 10px 0;
     border-radius: 7px;
     border: none;
     color: var(--color-text);
@@ -13,6 +13,11 @@ button.prominent {
 button.prominent:hover {
     opacity: .7;
     transition: opacity .3s ease-out;
+}
+
+a.link {
+    display: inline-block;
+    padding: 10px 0;
 }
 
 @keyframes load {

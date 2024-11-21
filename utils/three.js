@@ -3,7 +3,7 @@
 import * as THREE from "three"
 import GUI from "lil-gui"
 
-const count = 500
+const count = 250
 const mouse = {
     x: 0,
     y: 0
@@ -153,7 +153,7 @@ export const renderThreeContent = () => {
         const parallaxX = - mouse.x * 0.25
         const parallaxY = mouse.y * 0.25
 
-        const damping = 2
+        const damping = 1
 
         cameraGroup.position.z += (parallaxX - cameraGroup.position.z) * damping * deltaTime
         cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * damping * deltaTime
