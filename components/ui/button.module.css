@@ -7,9 +7,21 @@ button.prominent {
     font-weight: 500;
     width: 125px;
     letter-spacing: 1px;
+    animation: load .5s .15s ease-in-out;
 }
 
 button.prominent:hover {
     opacity: .8;
     transition: all .3s ease-out;
+}
+
+@keyframes load {
+    0% {
+        opacity: 0;
+        transform: translateX(-2%)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
 }
