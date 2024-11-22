@@ -1,20 +1,13 @@
-// import { useState } from "react"
 import Link from "next/link"
 
 import classes from "./project.module.css"
 
 export default function Project({ project }) {
-    // const [isHovered, setIsHovered] = useState(false)
-
-    const { title, description, href, icon } = project
+    const { title, description, href, icon, target } = project
 
     return (
-        <li
-            // onMouseEnter={() => setIsHovered(true)}
-            // onMouseLeave={() => setIsHovered(false)}
-            className={classes.project}
-        >
-            <Link href={href}>
+        <li className={classes.project} >
+            <Link href={href} target={target ? target : '_self'}>
                     <div className={classes["project-content"]}>
                         <section className={classes["project-icon"]}>
                             {icon}

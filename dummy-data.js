@@ -5,6 +5,7 @@ import { IoCarSportOutline } from "react-icons/io5"
 import { AiOutlineHtml5 } from "react-icons/ai"
 import { TbBrandJavascript } from "react-icons/tb"
 import { GrTicket } from "react-icons/gr"
+import { BsWatch } from "react-icons/bs"
 
 export const CATEGORIES = [
     {
@@ -44,24 +45,32 @@ export const CATEGORIES = [
                 description: "Las Vegas Wraps",
                 href: "/work/incognito-wraps",
                 icon: <IoCarSportOutline />
+            },
+            {
+                title: "IWC Clone",
+                description: "IWC Watches Clone",
+                href: "/work/iwc-clone",
+                icon: <BsWatch />
             }
         ]
     },
     {
-        title: "Portfolios",
+        title: "Portfolio Archive",
         projects: [
             {
-                title: "Portfolio V2",
+                title: "Portfolio v2",
                 description: "Built in 2021",
-                href: "/work/portfolio-v2",
-                icon: <TbBrandJavascript />
+                href: "http://v2.localhost:3002",
+                icon: <TbBrandJavascript />,
+                target: '_blank'
             },
             {
-                title: "Portfolio V1",
+                title: "Portfolio v1",
                 description: "Built in 2020",
-                href: "/work/portfolio-v1",
-                icon: <AiOutlineHtml5 />
-            },
+                href: "http://v1.localhost:3001",
+                icon: <AiOutlineHtml5 />,
+                target: '_blank'
+            }
         ]
     }
 ]

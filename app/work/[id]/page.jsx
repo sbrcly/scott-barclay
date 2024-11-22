@@ -16,4 +16,4 @@ export default async function ProjectDetails({ params }) {
             <h3>{id}</h3>
         </main>
     )
-};
+}
